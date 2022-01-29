@@ -15,6 +15,7 @@ import { Tasks } from './types/task';
             
             {{ item.name }} 
           </label>
+          <a routerLink="/{{ item.id }}/details">Details</a>
     </li>
 </ul>
     `
