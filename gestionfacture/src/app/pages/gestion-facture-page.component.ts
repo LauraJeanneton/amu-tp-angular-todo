@@ -2,6 +2,7 @@
 
 import { Component } from '@angular/core';
 import { Tasks } from 'src/app/types/task';
+import { Factures } from 'src/app/types/facture';
 import { HttpClient } from "@angular/common/http";
 import { TasksService } from 'src/app/api/tasks.service';
 
@@ -20,6 +21,7 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsI
 
 export class GestionFacturePageComponent {
   tasks: Tasks = [];
+  factures:Factures=[];
 
   constructor(
     private http: HttpClient, 

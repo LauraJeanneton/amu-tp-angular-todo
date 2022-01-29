@@ -15,7 +15,8 @@ const routes: Routes = [
   // La page d'accueil affichera la liste des tâches
   { path: '', component: GestionFacturePageComponent },
   // Ici on utilise une URL paramétrée
-  { path: ':id/details', component: ClientDetailsPageComponent }
+  { path: ':id/details', component: ClientDetailsPageComponent },
+  { path: ':id/invoices/create', component: ClientDetailsPageComponent }
 ]
 
 @NgModule({
