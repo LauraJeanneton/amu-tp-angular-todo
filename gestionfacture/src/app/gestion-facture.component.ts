@@ -6,25 +6,21 @@ import { Tasks } from './types/task';
     // Ce composant sera affiché par Angular à chaque fois
     // qu'un élément <app-todo-list> sera rencontré dans
     // un template HTML
-    selector: 'app-todo-list',
+    selector: 'app-gestion-facture',
     // Le HTML reprend ici notre liste de tâches
     template: `
     <ul>
     <li *ngFor="let item of tasks">
-        <label>
-        <input 
-            type="checkbox" 
-            id="item-{{ item.id }}" 
-            [checked]="item.done" 
-        />
-        {{ item.text }}
+        <label id="item-{{ item.id }}">
+        
+        {{ item.name }}  {{ item.mail }}
         </label>
     </li>
 </ul>
     `
 })
 
-export class TodoListComponent {
+export class GestionFactureComponent {
     @Input()
     tasks: Tasks[] = []; 
 }

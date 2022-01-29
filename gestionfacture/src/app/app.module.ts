@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { TodoListComponent } from 'src/app/todo-list.component';
+import { GestionFactureComponent } from 'src/app/gestion-facture.component';
 
 @NgModule({
   declarations: [
-    AppComponent, TodoListComponent
+    AppComponent, GestionFactureComponent
   ],
   imports: [
     BrowserModule
