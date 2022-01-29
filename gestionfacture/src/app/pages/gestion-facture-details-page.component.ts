@@ -6,13 +6,22 @@ import { Task } from "../types/task";
 @Component({
     selector: 'app-gestion-details-page',
     template: `
+    
     <ng-container *ngIf="task">
-        <h2>{{ task.name }}</h2>
-        <strong>Statut : </strong>
+        <h1>Fiche de {{task.name}}</h1>
+        
+        <strong>Contact : </strong>
         {{task.mail}}
         <br />
-        <a routerLink="/">Retour aux tâches</a>
-    </ng-container>
+       
+        <a id="retour" routerLink="/">Retour aux clients</a>
+       
+        <div id="factures">
+        <div id="facture">
+        Fact 1
+    </div>
+        </div>
+        </ng-container>
 
     <p *ngIf="!task">En cours de chargement</p>
 `

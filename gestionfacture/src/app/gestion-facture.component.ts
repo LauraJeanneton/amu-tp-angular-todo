@@ -9,6 +9,7 @@ import { Tasks } from './types/task';
     selector: 'app-gestion-facture',
     // Le HTML reprend ici notre liste de tâches
     template: `
+    <h1>Liste des clients</h1>
     <ul>
           <li *ngFor="let item of tasks">
           <label id="item-{{ item.id }}">

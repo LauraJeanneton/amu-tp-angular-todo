@@ -33,6 +33,29 @@
     height: 80%;
     width: 50%;
   }
+
+  #factures {
+    border-color: black;
+    border: solid;
+    border-width: 2px ;
+  }
+
+  #facture {
+    border-color: black;
+    border: solid;
+    border-width: 2px ;
+    margin : 10px;
+    padding: 5px;
+  }
+
+  #retour{
+    background-color: rgb(202, 152, 152);
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: inline-flex;
+    color: black;
+  }
   
   main {
     height: 60%;
