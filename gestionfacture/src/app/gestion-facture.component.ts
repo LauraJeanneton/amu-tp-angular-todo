@@ -12,7 +12,7 @@ import { Tasks } from './types/task';
     <ul>
           <li *ngFor="let item of tasks">
           <label id="item-{{ item.id }}">
-        
+            
             {{ item.name }} 
           </label>
     </li>

@@ -16,6 +16,9 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsI
         <app-gestion-facture 
         [tasks]="tasks"
       ></app-gestion-facture >
+      <app-task-form 
+      (onNewTask)="addTask($event)"
+    ></app-task-form>
         </main>
     </div>
   `,
@@ -24,9 +27,6 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsI
 export class AppComponent {
   tasks: Tasks = [];
 
-  // Le constructeur nous permet toujours d'obtenir une instance
-  // du HttpClient, mais on ne l'utilise plus du tout dans 
-  // le constructeur
   constructor(private http: HttpClient) { }
 
   // La méthode ngOnInit sera appelée par Angular lors du chargement 
@@ -41,4 +41,21 @@ export class AppComponent {
     }).subscribe((tasks) => this.tasks = tasks)
   }
 
+  addTask(text: string) {
+    this.http.post<Tasks>(
+      'https://tabibcoqujeidnjexfoi.supabase.co/rest/v1/clients', 
+      {
+        name: text,
+        mail: "false"
+      }, 
+      {
+        headers: {
+          "Content-Type": "application/json",
+          apiKey: SUPABASE_KEY,
+          Prefer: "return=representation"
+        }
+      }
+    )
+    .subscribe((tasks) => this.tasks.push(tasks[0]));
+}
 }
