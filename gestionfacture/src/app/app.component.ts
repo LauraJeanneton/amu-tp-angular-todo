@@ -3,6 +3,7 @@
 import { Component } from '@angular/core';
 import { Tasks } from './types/task';
 import { HttpClient } from "@angular/common/http";
+import { TasksService } from './api/tasks.service';
 
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTY0MzQ3NjUzNCwiZXhwIjoxOTU5MDUyNTM0fQ.0qJa4eUcVYkSMRp6yoTkkgwkR9bb5J1Ukj3-wp-jC0U'
 
@@ -27,35 +28,28 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsI
 export class AppComponent {
   tasks: Tasks = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient, 
+    private service: TasksService
+  ) { }
 
   // La méthode ngOnInit sera appelée par Angular lors du chargement 
   // du composant. C'est typiquement ici que l'on placera nos comportements
   // complexes à exécuter au départ :
   ngOnInit() {
-    this.http.get<Tasks>('https://tabibcoqujeidnjexfoi.supabase.co/rest/v1/clients', {
-      headers: {
-        "Content-Type": "application/json",
-        apiKey: SUPABASE_KEY
-      }
-    }).subscribe((tasks) => this.tasks = tasks)
+    // On remplace le code de la requête HTTP par l'appel
+    // à la méthode findAll() de notre service, qui renverra
+    // exactement la même chose que ce que renvoyait le
+    // HttpClient, on réagira donc de la même manière via la 
+    // méthode subscribe()
+    this.service
+      .findAll()
+      .subscribe((tasks) => this.tasks = tasks)
   }
 
-  addTask(text: string) {
-    this.http.post<Tasks>(
-      'https://tabibcoqujeidnjexfoi.supabase.co/rest/v1/clients', 
-      {
-        name: text,
-        mail: "false"
-      }, 
-      {
-        headers: {
-          "Content-Type": "application/json",
-          apiKey: SUPABASE_KEY,
-          Prefer: "return=representation"
-        }
-      }
-    )
-    .subscribe((tasks) => this.tasks.push(tasks[0]));
-}
+  addTask(name: string) {
+    this.service
+      .create(name)
+      .subscribe((tasks) => this.tasks.push(tasks[0]));
+  }
 }

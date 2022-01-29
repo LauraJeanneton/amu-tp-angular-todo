@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { GestionFactureComponent } from 'src/app/gestion-facture.component';
 import { TaskFormComponent } from './task-form.component';
+import { TasksService } from './api/tasks.service';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { TaskFormComponent } from './task-form.component';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [TasksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
