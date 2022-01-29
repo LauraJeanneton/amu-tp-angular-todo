@@ -10,11 +10,11 @@ import { Tasks } from './types/task';
     // Le HTML reprend ici notre liste de tâches
     template: `
     <ul>
-    <li *ngFor="let item of tasks">
-        <label id="item-{{ item.id }}">
+          <li *ngFor="let item of tasks">
+          <label id="item-{{ item.id }}">
         
-        {{ item.name }}  {{ item.mail }}
-        </label>
+            {{ item.name }} 
+          </label>
     </li>
 </ul>
     `
@@ -22,5 +22,5 @@ import { Tasks } from './types/task';
 
 export class GestionFactureComponent {
     @Input()
-    tasks: Tasks[] = []; 
+    tasks: Tasks = []; 
 }
