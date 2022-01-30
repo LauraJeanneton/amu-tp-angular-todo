@@ -5,7 +5,7 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { TaskFormComponent } from "./task-form.component";
 import { Facture } from "../types/facture";
 import {Router} from '@angular/router';
-import { Task } from "../types/task";
+import { Client } from "../types/task";
 import { ActivatedRoute } from "@angular/router";
 import { TasksService } from "../api/tasks.service";
 
@@ -36,7 +36,7 @@ import { TasksService } from "../api/tasks.service";
     `
 })
 export class CreationFactureFormComponent {
-    task?: Task;
+    task?: Client;
      id: number = Number(this.route.snapshot.paramMap.get('id'));
      constructor(private route: ActivatedRoute, private service: TasksService, private router : Router) { }
     SEND_OPTION : any = "SEND";

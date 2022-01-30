@@ -3,7 +3,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { Tasks } from "../types/task";
+import { Clients } from "../types/task";
 import { Facture, Factures } from "../types/facture";
 import { BoundElementProperty } from "@angular/compiler";
 
@@ -18,8 +18,8 @@ export class TasksService {
     
     constructor(private http: HttpClient) { }
 
-    findAll(): Observable<Tasks> {
-        return this.http.get<Tasks>(SUPABASE_URL, {
+    findAll(): Observable<Clients> {
+        return this.http.get<Clients>(SUPABASE_URL, {
             headers: {
                 "Content-Type": "application/json",
                 apiKey: SUPABASE_API_KEY
@@ -40,11 +40,11 @@ export class TasksService {
      * Créé une tâche auprès de l'API qui nous retournera un tableau contenant la tâche
      * nouvellement créée
      */
-    create(text: string): Observable<Tasks> {
-        console.log("Ajout de "+text)
-        return this.http.post<Tasks>(SUPABASE_URL, {
-            name: text,
-            mail: "false"
+    create(name: string,mail:string): Observable<Clients> {
+        console.log("Ajout de "+name+ + " et "+mail)
+        return this.http.post<Clients>(SUPABASE_URL, {
+            name: name,
+            mail: mail
         }, {
             headers: {
                 "Content-Type": "application/json",
@@ -69,8 +69,8 @@ export class TasksService {
         });
     }
 
-    findOne(id: number): Observable<Tasks> {
-        return this.http.get<Tasks>(SUPABASE_URL + '?id=eq.' + id, {
+    findOne(id: number): Observable<Clients> {
+        return this.http.get<Clients>(SUPABASE_URL + '?id=eq.' + id, {
             headers: {
                 "Content-Type": "application/json",
                 apiKey: SUPABASE_API_KEY,

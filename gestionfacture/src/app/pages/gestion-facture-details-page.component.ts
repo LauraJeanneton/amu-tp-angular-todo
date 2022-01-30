@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { TasksService } from "../api/tasks.service";
 import { Facture } from "../types/facture";
-import { Task } from "../types/task";
+import { Client } from "../types/task";
 
 @Component({
     selector: 'app-gestion-details-page',
@@ -32,7 +32,7 @@ import { Task } from "../types/task";
 `
 })
 export class ClientDetailsPageComponent {
-    task?: Task;
+    task?: Client;
     facture?:Facture[];
 
     constructor(private route: ActivatedRoute, private service: TasksService) { }

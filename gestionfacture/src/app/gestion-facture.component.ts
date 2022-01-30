@@ -1,7 +1,7 @@
 // src/app/todo-list.component.ts
 
 import { Component, Input } from "@angular/core";
-import { Tasks } from './types/task';
+import { Clients } from './types/task';
 @Component({
     // Ce composant sera affiché par Angular à chaque fois
     // qu'un élément <app-todo-list> sera rencontré dans
@@ -27,5 +27,5 @@ import { Tasks } from './types/task';
 
 export class GestionFactureComponent {
     @Input()
-    tasks: Tasks = []; 
+    tasks: Clients = []; 
 }

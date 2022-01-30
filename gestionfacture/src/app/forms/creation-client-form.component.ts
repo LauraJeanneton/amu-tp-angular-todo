@@ -5,41 +5,40 @@ import { FormControl, FormGroup } from "@angular/forms";
 import { TaskFormComponent } from "./task-form.component";
 import { Facture } from "../types/facture";
 import {Router} from '@angular/router';
-import { Task } from "../types/task";
+import { Client } from "../types/task";
 import { ActivatedRoute } from "@angular/router";
 import { TasksService } from "../api/tasks.service";
 
 @Component({
-    selector: "app-creation-facture-form",
+    selector: "app-creation-client-form",
     template: `
     <form (ngSubmit)="onSubmit()" [formGroup]="form">
     <p>
-    <label>Montant : </label><input 
-            formControlName="text"
+    <label>Nom Prenom : </label> 
+    <input 
+            formControlName="name"
             type="text" 
             name="text" 
-            placeholder="Montant" 
+            placeholder="Nom Prenom" 
+        /><br/><br/>
+    <label>Adresse mail : </label>
+    <input 
+            formControlName="mail"
+            type="text" 
+            name="text" 
+            placeholder="Mail" 
         />
-        <br/><br/>
- <label>Statut : </label><select name="status" id="status" formControlName="status" [(ngModel)]="SEND_OPTION">
- <option value="SEND" >Envoyé</option>
- <option value="PAID">Payé</option>
-</select>
-
-    
-
  <br/><br/> 
  <button id="retour" >Enregistrer</button> &nbsp;&nbsp;
- <a id="retour" routerLink="/{{ id }}/details">Annuler</a>
+ <a id="retour" routerLink="/">Annuler</a>
         </p>
     </form>
     `
 })
-export class CreationFactureFormComponent {
+export class CreationClientFormComponent {
     task?: Task;
-     id: number = Number(this.route.snapshot.paramMap.get('id'));
      constructor(private route: ActivatedRoute, private service: TasksService, private router : Router) { }
-    SEND_OPTION : any = "SEND";
+    
     // Le décorateur @Output permet de signaler à Angular 
     // que notre composant va pouvoir faire sortir une information
     // vers l'exéterieur sous a forme d'un événément !
@@ -47,31 +46,30 @@ export class CreationFactureFormComponent {
     // de la classe EventEmitter tout en précisant que l'information
     // qui sera émise sera une string (le texte tapé dans le formulaire !) :
     @Output()
-    onNewTask = new EventEmitter<Facture>();
+    onNewTask = new EventEmitter<Client>();
 
     form = new FormGroup({
-        text: new FormControl(),
-        status: new FormControl()
+        name: new FormControl(),
+        mail: new FormControl()
     });
-     truc: Facture = {
-        idClient: this.id,
-        amount:"",
-        status:""
+     truc: Client = {
+         id:0,
+        name: "",
+        mail:""
       };
     onSubmit() {
-        this.truc.amount=this.form.value.text;
-        this.truc.status=this.form.value.status;
+        this.truc.name=this.form.value.name;
+        this.truc.mail=this.form.value.mail;
        
         console.log(this.form.value)
         
     this.onNewTask.emit(this.truc);
 
         this.form.setValue({
-            text: '',
-            status:""
+            name: '',
+            mail:""
         });
-        console.log("/{{ id }}/details")
-        this.router.navigate(["/"+this.id+"/details"]);
+        this.router.navigate(["/"]);
     }
     
 }

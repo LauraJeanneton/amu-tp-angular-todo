@@ -2,7 +2,7 @@ import { Component, Output, EventEmitter } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { TasksService } from "../api/tasks.service";
 import { Facture, Factures } from "../types/facture";
-import { Task } from "../types/task";
+import { Client } from "../types/task";
 import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
@@ -23,7 +23,7 @@ import { FormControl, FormGroup } from "@angular/forms";
 `
 })
 export class CreactionFacturePageComponent {
-    task?: Task;
+    task?: Client;
     factures:Factures=[];
 
     constructor(private route: ActivatedRoute, private service: TasksService) { }

@@ -13,6 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CreationFactureFormComponent } from './forms/creation-facture-form.component';
 import { CreactionClientPageComponent } from './pages/creation-client-page.component';
 import { TaskFormComponent } from './forms/task-form.component';
+import { CreationClientFormComponent } from './forms/creation-client-form.component';
 
 const routes: Routes = [
   // La page d'accueil affichera la liste des tâches
@@ -28,7 +29,7 @@ const routes: Routes = [
   declarations: [
     AppComponent, GestionFactureComponent,TaskFormComponent,
     GestionFacturePageComponent,ClientDetailsPageComponent,CreactionFacturePageComponent,
-    CreationFactureFormComponent,CreactionClientPageComponent
+    CreationFactureFormComponent,CreactionClientPageComponent,CreationClientFormComponent
   ],
   imports: [
     BrowserModule,

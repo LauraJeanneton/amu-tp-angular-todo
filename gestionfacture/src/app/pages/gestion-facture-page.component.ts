@@ -1,8 +1,8 @@
 // src/app/app.component.ts
 
 import { Component } from '@angular/core';
-import { Tasks } from 'src/app/types/task';
-import { Factures } from 'src/app/types/facture';
+import { Clients } from 'src/app/types/task';
+import { Factures,Facture } from 'src/app/types/facture';
 import { HttpClient } from "@angular/common/http";
 import { TasksService } from 'src/app/api/tasks.service';
 
@@ -15,12 +15,11 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsI
             [tasks]="tasks" 
         >
         </app-gestion-facture>
-        <app-task-form (onNewTask)="addTask($event)"></app-task-form>
     `
 })
 
 export class GestionFacturePageComponent {
-  tasks: Tasks = [];
+  tasks: Clients = [];
   factures:Factures=[];
 
   constructor(
@@ -34,9 +33,5 @@ export class GestionFacturePageComponent {
       .subscribe((tasks) => this.tasks = tasks)
   }
 
-  addTask(name: string) {
-    this.service
-      .create(name)
-      .subscribe((tasks) => this.tasks.push(tasks[0]));
-  }
+  
 }

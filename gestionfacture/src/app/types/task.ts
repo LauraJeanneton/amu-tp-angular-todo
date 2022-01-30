@@ -1,9 +1,9 @@
 import { TaskFormComponent } from "../forms/task-form.component";
 
-export type Task = {
+export type Client = {
     id: number;
     name: string;
     mail: string;
 }
 
-export type Tasks = Task[];
+export type Clients = Client[];
