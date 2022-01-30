@@ -4,7 +4,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Tasks } from "../types/task";
-import { Factures } from "../types/facture";
+import { Facture, Factures } from "../types/facture";
+import { BoundElementProperty } from "@angular/compiler";
 
 const SUPABASE_URL = 'https://tabibcoqujeidnjexfoi.supabase.co/rest/v1/clients';
 const SUPABASE_URL_FACTURE = 'https://tabibcoqujeidnjexfoi.supabase.co/rest/v1/facture';
@@ -40,9 +41,25 @@ export class TasksService {
      * nouvellement créée
      */
     create(text: string): Observable<Tasks> {
+        console.log("Ajout de "+text)
         return this.http.post<Tasks>(SUPABASE_URL, {
             name: text,
             mail: "false"
+        }, {
+            headers: {
+                "Content-Type": "application/json",
+                apiKey: SUPABASE_API_KEY,
+                Prefer: "return=representation"
+            }
+        });
+    }
+
+    createFacture(idClient:number,amount:string,status:string): Observable<Factures> {
+        console.log("Ajout de "+idClient+" "+amount +" "+ status)
+        return this.http.post<Factures>(SUPABASE_URL_FACTURE, {
+            idclient: idClient,
+            amount: amount,
+            status:status
         }, {
             headers: {
                 "Content-Type": "application/json",

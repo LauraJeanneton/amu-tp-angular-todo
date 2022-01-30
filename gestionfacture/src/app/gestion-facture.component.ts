@@ -10,6 +10,9 @@ import { Tasks } from './types/task';
     // Le HTML reprend ici notre liste de tâches
     template: `
     <h1>Liste des clients</h1>
+        
+    <a id="retour" routerLink="/create">Créer un client</a>
+
     <ul>
           <li *ngFor="let item of tasks">
           <label id="item-{{ item.id }}">

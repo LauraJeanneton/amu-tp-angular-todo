@@ -1,4 +1,4 @@
-import { TaskFormComponent } from "../task-form.component";
+import { TaskFormComponent } from "../forms/task-form.component";
 
 export type Task = {
     id: number;

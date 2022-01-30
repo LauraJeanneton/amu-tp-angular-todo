@@ -2,8 +2,10 @@
 
 export type Facture = {
     idClient: number;
-    amount: Float32List;
+    amount: string;
     status: string;
+    
 }
 
 export type Factures = Facture[];
+
