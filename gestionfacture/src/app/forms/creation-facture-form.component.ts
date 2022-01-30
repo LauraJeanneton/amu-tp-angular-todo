@@ -30,7 +30,7 @@ import { TasksService } from "../api/tasks.service";
 
  <br/><br/> 
  <button id="retour" >Enregistrer</button> &nbsp;&nbsp;
- <a id="retour" routerLink="/{{ id }}/details">Annuler</a>
+ <a id="retour" routerLink="/{{ id }}">Annuler</a>
         </p>
     </form>
     `
@@ -75,8 +75,7 @@ export class CreationFactureFormComponent {
             text: '',
             status:""
         });
-        console.log("/{{ id }}/details")
-        this.router.navigate(["/"+this.id+"/details"]);
+        this.router.navigate(["/"+this.id]);
     }
     
 }

@@ -18,10 +18,10 @@ import { CreationClientFormComponent } from './forms/creation-client-form.compon
 const routes: Routes = [
   // La page d'accueil affichera la liste des tâches
   { path: '', component: GestionFacturePageComponent },
-  // Ici on utilise une URL paramétrée
-  { path: ':id/details', component: ClientDetailsPageComponent },
+  
   { path: ':id/invoices/create', component: CreactionFacturePageComponent },
-  { path: 'create', component: CreactionClientPageComponent }
+  { path: 'create', component: CreactionClientPageComponent },
+  { path: ':id', component: ClientDetailsPageComponent },
 
 ]
 

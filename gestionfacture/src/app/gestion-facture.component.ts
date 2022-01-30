@@ -19,7 +19,7 @@ import { Clients } from './types/task';
             
             {{ item.name }} 
           </label>
-          <a routerLink="/{{ item.id }}/details">Details</a>
+          <a routerLink="/{{ item.id }}">Details</a>
     </li>
 </ul>
     `
